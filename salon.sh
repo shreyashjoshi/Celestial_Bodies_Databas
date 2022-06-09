@@ -50,7 +50,8 @@ i=1
 while [[ $i -le $COUNT ]]
 do
   SERVICE=$($PSQL "select name from services where service_id=$i")
-  echo "$i) $SERVICE"
+  S="$(echo $SERVICE | sed -E 's/^ +(1)/(1)/g')" 
+  echo "$i) $S"
   i=$(( i+1 ))
 done
 GET_INPUT
